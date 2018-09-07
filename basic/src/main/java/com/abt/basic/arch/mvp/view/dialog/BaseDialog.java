@@ -11,12 +11,12 @@ import android.view.ViewGroup;
 import com.orhanobut.logger.Logger;
 
 /**
- * @描述： @MVVM 弹出框基类
+ * @描述： @弹出框基类
  * @作者： @黄卫旗
  * @创建时间： @21/05/2018
  */
 @SuppressLint("ValidFragment")
-public abstract class BaseDialog/*<VM extends DialogViewModel>*/ extends DialogFragment implements IDialogView {
+public abstract class BaseDialog extends DialogFragment implements IDialogView {
     public static final String TAG = "DIALOG_FRAGMENT";
 
     private int mLayoutId;
@@ -24,27 +24,13 @@ public abstract class BaseDialog/*<VM extends DialogViewModel>*/ extends DialogF
     //private VM mViewModel;
     private boolean mShowVisible = false;
 
+    public BaseDialog() { }
+
     @SuppressLint("ValidFragment")
-    public BaseDialog(int style, int theme, int layoutId, int variableId/*, VM model*/) {
+    public BaseDialog(int style, int theme, int layoutId, int variableId) {
         setStyle(style, theme);
         mLayoutId = layoutId;
         mVariableId = variableId;
-        //mViewModel = model;
-        //mViewModel.bindView(this);
-    }
-
-    public BaseDialog() {
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        Logger.v("on create view");
-        /*final ViewDataBinding binding = DataBindingUtil.inflate(inflater,
-                mLayoutId, container, false);
-        binding.setVariable(mVariableId, mViewModel);
-        return binding.getRoot();*/
-        return null;
     }
 
     @Override
@@ -54,31 +40,6 @@ public abstract class BaseDialog/*<VM extends DialogViewModel>*/ extends DialogF
             dismiss();
         }
         super.onCreate(savedInstanceState);
-    }
-
-    /**
-     * 获取VM
-     * @return
-     */
-    /*public final VM getViewModel() {
-        return mViewModel;
-    }*/
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        init(savedInstanceState);
-        Logger.v("on activity created ");
-    }
-
-    /*@Override
-    public void onDestroyView() {
-        mViewModel.unbindView();
-        super.onDestroyView();
-    }*/
-
-    protected void init(Bundle savedInstanceState) {
-
     }
 
     /**
