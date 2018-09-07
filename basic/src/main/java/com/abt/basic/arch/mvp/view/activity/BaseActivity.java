@@ -14,8 +14,15 @@ import javax.inject.Inject;
  */
 public abstract class BaseActivity<T extends AbstractPresenter> extends AbstractSimpleActivity implements IBaseView {
 
-    @Inject
     protected T mPresenter;
+
+    @Override
+    protected void onViewCreated() {
+        super.onViewCreated();
+        if (mPresenter != null) {
+            mPresenter.attachView(this);
+        }
+    }
 
     @Override
     protected void onDestroy() {
@@ -25,72 +32,9 @@ public abstract class BaseActivity<T extends AbstractPresenter> extends Abstract
         super.onDestroy();
     }
 
-    //TODO
-    /*protected ActivityComponent getActivityComponent() {
-        return DaggerActivityComponent.builder()
-                .appComponent(BaseApp.getAppComponent())
-                .activityModule(new ActivityModule(this))
-                .build();
-    }*/
-
-    @Override
-    protected void onViewCreated() {
-        super.onViewCreated();
-        initInject();
-        if (mPresenter != null) {
-            mPresenter.attachView(this);
-        }
-    }
-
-    @Override
-    public void showErrorMsg(String errorMsg) {
-        CommonUtil.showSnackMessage(this, errorMsg);
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
     @Override
     public void showLoading() {
 
     }
-
-    @Override
-    public void showCollectFail() {
-        CommonUtil.showSnackMessage(this, getString(R.string.collect_fail));
-    }
-
-    @Override
-    public void showCancelCollectFail() {
-        CommonUtil.showSnackMessage(this, getString(R.string.cancel_collect_fail));
-    }
-
-    @Override
-    public void showCollectSuccess() {
-
-    }
-
-    @Override
-    public void showCancelCollectSuccess() {
-
-    }
-
-    @Override
-    public void showLoginView() {
-
-    }
-
-    @Override
-    public void showLogoutView() {
-
-    }
-
-
-    /**
-     * 注入当前Activity所需的依赖
-     */
-    protected abstract void initInject();
 
 }
