@@ -16,6 +16,7 @@ import butterknife.Unbinder;
 import io.reactivex.disposables.CompositeDisposable;
 import me.yokeyword.fragmentation.SupportFragment;
 
+
 /**
  * @描述： @Common simple fragment
  * @作者： @黄卫旗
@@ -25,39 +26,26 @@ public abstract class AbstractSimpleFragment extends SupportFragment {
 
     private Unbinder unBinder;
     private long clickTime;
-    private CompositeDisposable mCompositeDisposable;
     public boolean isInnerFragment;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(getLayout(), container, false);
+        View view = inflater.inflate(getLayoutId(), container, false);
         unBinder = ButterKnife.bind(this, view);
-        mCompositeDisposable = new CompositeDisposable();
         return view;
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (mCompositeDisposable != null) {
-            mCompositeDisposable.clear();
-        }
         unBinder.unbind();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        //LeakCanary
-        RefWatcher refWatcher = BaseApp.getRefWatcher(_mActivity);
-        refWatcher.watch(this);
     }
 
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
-        initEventAndData();
+        initData();
     }
 
     /**
@@ -75,7 +63,6 @@ public abstract class AbstractSimpleFragment extends SupportFragment {
             long currentTime = System.currentTimeMillis();
             long time = 2000;
             if ((currentTime - clickTime) > time) {
-                CommonUtil.showSnackMessage(_mActivity, getString(R.string.double_click_exit_tint));
                 clickTime = System.currentTimeMillis();
             } else {
                 _mActivity.finish();
@@ -88,11 +75,12 @@ public abstract class AbstractSimpleFragment extends SupportFragment {
      * 获取当前Activity的UI布局
      * @return 布局id
      */
-    protected abstract int getLayout();
+    protected abstract int getLayoutId();
 
     /**
      * 初始化数据
      */
-    protected abstract void initEventAndData();
+    protected abstract void initData();
 
 }
+
