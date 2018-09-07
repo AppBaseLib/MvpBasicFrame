@@ -18,17 +18,16 @@ import me.yokeyword.fragmentation.SupportActivity;
 public abstract class AbstractSimpleActivity extends SupportActivity {
 
     private Unbinder unBinder;
-    protected AbstractSimpleActivity mActivity;
 
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
         unBinder = ButterKnife.bind(this);
-        mActivity = this;
         onViewCreated();
+        initData();
         ActivityCollector.getInstance().addActivity(this);
-        initEventAndData();
     }
 
     @Override
@@ -38,19 +37,12 @@ public abstract class AbstractSimpleActivity extends SupportActivity {
         unBinder.unbind();
     }
 
-    protected void setToolBar(Toolbar toolBar, CharSequence title) {
-        toolBar.setTitle(title);
-        setSupportActionBar(toolBar);
-        assert getSupportActionBar() != null;
-    }
-
     protected void onViewCreated() {
 
     }
 
     /**
      * 获取当前Activity的UI布局
-     *
      * @return 布局id
      */
     protected abstract int getLayoutId();
@@ -58,6 +50,6 @@ public abstract class AbstractSimpleActivity extends SupportActivity {
     /**
      * 初始化数据
      */
-    protected abstract void initEventAndData();
+    protected abstract void initData();
 
 }
