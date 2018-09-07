@@ -8,10 +8,8 @@ import com.abt.basic.arch.mvp.view.IBaseView;
  * @创建时间： @06/06/2018
  */
 public interface AbstractPresenter<T extends IBaseView> {
-
     /**
      * 注入View
-     *
      * @param view view
      */
     void attachView(T view);
