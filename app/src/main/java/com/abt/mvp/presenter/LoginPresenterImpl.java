@@ -5,6 +5,11 @@ import com.abt.mvp.model.ILoginModel;
 import com.abt.mvp.model.LoginModelImpl;
 import com.abt.mvp.view.ILoginView;
 
+/**
+ * @author 黄卫旗
+ * @description LoginPresenterImpl
+ * @time 2018/09/07
+ */
 public class LoginPresenterImpl implements ILoginPresenter, ILoginModel.OnLoginFinishedListener {
 
     private ILoginView loginView;
