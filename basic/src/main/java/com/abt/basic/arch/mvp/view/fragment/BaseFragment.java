@@ -4,19 +4,15 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.abt.basic.R;
 import com.abt.basic.arch.mvp.presenter.AbstractPresenter;
-import com.abt.basic.arch.mvp.view.IBaseView;
-import com.abt.basic.utils.CommonUtil;
-
-import javax.inject.Inject;
+import com.abt.basic.arch.mvp.view.AbstractView;
 
 /**
  * @描述： @MVP模式的BaseFragment
  * @作者： @黄卫旗
  * @创建时间： @06/06/2018
  */
-public abstract class BaseFragment<T extends AbstractPresenter> extends AbstractSimpleFragment implements IBaseView {
+public abstract class BaseFragment<T extends AbstractPresenter> extends AbstractSimpleFragment implements AbstractView {
 
     protected T mPresenter;
 

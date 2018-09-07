@@ -1,45 +1,62 @@
 
 package com.abt.mvp.view;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
+import com.abt.basic.arch.mvp.view.activity.BaseActivity;
+import com.abt.basic.logger.LogHelper;
+import com.abt.basic.utils.ToastUtil;
 import com.abt.mvp.R;
-import com.abt.mvp.presenter.ILoginPresenter;
-import com.abt.mvp.presenter.LoginPresenterImpl;
+import com.abt.mvp.contract.LoginContract;
+import com.abt.mvp.presenter.LoginPresenter;
+
+import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * @author 黄卫旗
  * @description LoginActivity
  * @time 2018/09/07
  */
-public class LoginActivity extends AppCompatActivity implements ILoginView, View.OnClickListener {
+public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginContract.View {
 
-    private ProgressBar progressBar;
-    private EditText username;
-    private EditText password;
-    private ILoginPresenter presenter;
+    private static final String TAG = LoginActivity.class.getSimpleName();
+
+    @BindView(R.id.progress)
+    ProgressBar progressBar;
+    @BindView(R.id.username)
+    EditText username;
+    @BindView(R.id.password)
+    EditText password;
+
+    LoginContract.Presenter mPresenter;
+
+    @OnClick(R.id.button) void login(Button button) {
+        LogHelper.d(TAG, "click to login()");
+        ToastUtil.show("click to login()");
+        button.setText(R.string.logined);
+        mPresenter.getLoginData(username.getText().toString(), password.getText().toString());
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_login;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
-        progressBar = (ProgressBar) findViewById(R.id.progress);
-        username = (EditText) findViewById(R.id.username);
-        password = (EditText) findViewById(R.id.password);
-        findViewById(R.id.button).setOnClickListener(this);
-
-        presenter = new LoginPresenterImpl(this);
+        LogHelper.d(TAG, "onCreate()");
+        mPresenter = new LoginPresenter(this);
     }
 
-    @Override protected void onDestroy() {
-        presenter.onDestroy();
-        super.onDestroy();
+    @Override
+    public void showLoginSuccess() {
+        ToastUtil.show("login success!!");
     }
 
     @Override public void showProgress() {
@@ -59,11 +76,11 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
     }
 
     @Override public void navigateToHome() {
-        startActivity(new Intent(this, MainActivity.class));
-        finish();
+        MainActivity.startActivity();
     }
 
-    @Override public void onClick(View v) {
-        presenter.validateCredentials(username.getText().toString(), password.getText().toString());
+    @Override
+    public void showLoading() {
+        super.showLoading();
     }
 }

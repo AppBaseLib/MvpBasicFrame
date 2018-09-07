@@ -5,7 +5,7 @@ import android.util.Log;
 import com.abt.basic.BuildConfig;
 
 /**
- * @描述： @LogUtil
+ * @描述： @LogHelper
  * @作者： @黄卫旗
  * @创建时间： @29/08/2018
  */

@@ -11,9 +11,10 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.abt.basic.app.BaseApp;
 import com.abt.basic.R;
+import com.abt.basic.app.BaseApp;
 import com.abt.basic.app.Constants;
+import com.abt.basic.logger.LogStack;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -31,7 +32,7 @@ public class CommonUtil {
      * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
      */
     public static int dp2px(float dpValue) {
-        final float scale = BaseApp.getInstance().getResources().getDisplayMetrics().density;
+        final float scale = BaseApp.getAppContext().getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
 
@@ -42,7 +43,7 @@ public class CommonUtil {
      * @param msg message
      */
     public static void showMessage(Activity activity, String msg) {
-        LogUtil.e("showMessage ：" + msg);
+        LogStack.e("showMessage ：" + msg);
         Toast.makeText(activity, msg, Toast.LENGTH_SHORT).show();
     }
 
@@ -53,7 +54,7 @@ public class CommonUtil {
      * @param msg message
      */
     public static void showSnackMessage(Activity activity, String msg) {
-        LogUtil.e("showSnackMessage ：" + msg);
+        LogStack.e("showSnackMessage ：" + msg);
         Snackbar snackbar = Snackbar.make(activity.getWindow().getDecorView(), msg, Snackbar.LENGTH_SHORT);
         View view = snackbar.getView();
         ((TextView) view.findViewById(R.id.snackbar_text)).setTextColor(ContextCompat.getColor(activity, android.R.color.white));
@@ -75,7 +76,8 @@ public class CommonUtil {
      * 检查是否有可用网络
      */
     public static boolean isNetworkConnected() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) BaseApp.getInstance().getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connectivityManager = (ConnectivityManager) BaseApp.getAppContext().
+                getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         assert connectivityManager != null;
         return connectivityManager.getActiveNetworkInfo() != null;
     }

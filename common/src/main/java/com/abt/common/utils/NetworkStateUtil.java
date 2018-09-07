@@ -7,7 +7,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.telephony.TelephonyManager;
 
-import com.abt.basic.app.BasicApplication;
+import com.abt.basic.app.BaseApp;
 import com.abt.common.app.CommonApp;
 
 import java.lang.reflect.Field;
@@ -169,14 +169,14 @@ public class NetworkStateUtil {
      * @return NetworkInfo
      */
     public static NetworkInfo getActiveNetworkInfo() {
-        final Context context = BasicApplication.getAppContext();
+        final Context context = BaseApp.getAppContext();
         ConnectivityManager cm = (ConnectivityManager) context
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         return cm.getActiveNetworkInfo();
     }
 
     public static int getWifiSignal() {
-        Context context = BasicApplication.getAppContext();
+        Context context = BaseApp.getAppContext();
         WifiManager wifiManager = (WifiManager) context.getApplicationContext().getSystemService(WIFI_SERVICE);
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
         int level = wifiInfo.getRssi();
@@ -201,7 +201,7 @@ public class NetworkStateUtil {
     public static boolean isNetworkAvalible() {
         // 获得网络状态管理器
         ConnectivityManager connectivityManager = (ConnectivityManager)
-                BasicApplication.getAppContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+                BaseApp.getAppContext().getSystemService(Context.CONNECTIVITY_SERVICE);
 
         if (connectivityManager == null) {
             return false;

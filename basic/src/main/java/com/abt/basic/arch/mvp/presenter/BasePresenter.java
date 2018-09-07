@@ -1,16 +1,13 @@
 package com.abt.basic.arch.mvp.presenter;
 
-import com.abt.basic.arch.mvp.view.IBaseView;
-
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
+import com.abt.basic.arch.mvp.view.AbstractView;
 
 /**
  * @描述： @BasePresenter
  * @作者： @黄卫旗
  * @创建时间： @06/06/2018
  */
-public class BasePresenter<T extends IBaseView> implements AbstractPresenter<T> {
+public class BasePresenter<T extends AbstractView> implements AbstractPresenter<T> {
 
     protected T mView;
 

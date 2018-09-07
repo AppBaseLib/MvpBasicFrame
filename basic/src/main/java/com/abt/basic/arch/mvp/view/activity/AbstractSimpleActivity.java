@@ -1,8 +1,8 @@
 package com.abt.basic.arch.mvp.view.activity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.Toolbar;
 
 import com.abt.basic.arch.component.ActivityCollector;
 
@@ -26,7 +26,6 @@ public abstract class AbstractSimpleActivity extends SupportActivity {
         setContentView(getLayoutId());
         unBinder = ButterKnife.bind(this);
         onViewCreated();
-        initData();
         ActivityCollector.getInstance().addActivity(this);
     }
 
@@ -46,10 +45,5 @@ public abstract class AbstractSimpleActivity extends SupportActivity {
      * @return 布局id
      */
     protected abstract int getLayoutId();
-
-    /**
-     * 初始化数据
-     */
-    protected abstract void initData();
 
 }
