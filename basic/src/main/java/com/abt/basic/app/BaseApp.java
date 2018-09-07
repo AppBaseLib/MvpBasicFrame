@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.abt.basic.BuildConfig;
 import com.abt.basic.core.dao.DaoMaster;
 import com.abt.basic.core.dao.DaoSession;
 import com.abt.basic.di.component.AppComponent;
@@ -21,29 +22,30 @@ public abstract class BaseApp extends Application {
     private RefWatcher refWatcher;
     private static volatile AppComponent appComponent;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        sContext = this;
-        init();
-        initComplete();
-        initGreenDao();        
-    }
-
     public static final BaseApp getAppContext() {
         return sContext;
     }
 
-    private final void init() {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        sContext = this;
+        initial();
+        initComplete();
+        initGreenDao();        
+    }
+
+    public abstract void initComplete();
+
+    private final void initial() {
         if (BuildConfig.DEBUG) {
             //DebugManage.initialize(this);
         }
     }
 
-    public abstract void initComplete();
-
     private void initGreenDao() {
-        DaoMaster.DevOpenHelper devOpenHelper = new DaoMaster.DevOpenHelper(this, Constants.DB_NAME);
+        DaoMaster.DevOpenHelper devOpenHelper = new DaoMaster.DevOpenHelper(
+                this, Constants.DB_NAME);
         SQLiteDatabase database = devOpenHelper.getWritableDatabase();
         DaoMaster daoMaster = new DaoMaster(database);
         mDaoSession = daoMaster.newSession();
@@ -51,7 +53,6 @@ public abstract class BaseApp extends Application {
 
     public static synchronized AppComponent getAppComponent() {
         if (appComponent == null) {
-            //TODO
             /*appComponent = DaggerAppComponent.builder()
                     .appModule(new AppModule(instance))
                     .httpModule(new HttpModule())
@@ -60,13 +61,13 @@ public abstract class BaseApp extends Application {
         return appComponent;
     }
 
-    public DaoSession getDaoSession() {
-        return mDaoSession;
-    }
-
     public static RefWatcher getRefWatcher(Context context) {
         BaseApp application = (BaseApp) context.getApplicationContext();
         return application.refWatcher;
+    }
+
+    public DaoSession getDaoSession() {
+        return mDaoSession;
     }
 
 }

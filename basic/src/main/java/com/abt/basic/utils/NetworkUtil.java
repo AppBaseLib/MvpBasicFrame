@@ -9,7 +9,7 @@ import android.net.wifi.WifiManager;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 
-import com.abt.basic.app.BasicApplication;
+import com.abt.basic.app.BaseApp;
 
 import static android.content.Context.WIFI_SERVICE;
 
@@ -34,10 +34,9 @@ public final class NetworkUtil {
     /**
      * 打开网络设置界面
      * <p>3.0以下打开设置界面</p>
-     *
      */
     public static void openWirelessSettings() {
-        final Context context = BasicApplication.getAppContext();
+        final Context context = BaseApp.getAppContext();
         if (android.os.Build.VERSION.SDK_INT > 10) {
             context.startActivity(new Intent(Settings.ACTION_SETTINGS));
         } else {
@@ -51,7 +50,7 @@ public final class NetworkUtil {
      * @return NetworkInfo
      */
     public static NetworkInfo getActiveNetworkInfo() {
-        final Context context = BasicApplication.getAppContext();
+        final Context context = BaseApp.getAppContext();
         ConnectivityManager cm = (ConnectivityManager) context
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         return cm.getActiveNetworkInfo();
@@ -68,13 +67,15 @@ public final class NetworkUtil {
         return info != null && info.isAvailable();
     }
 
-    public static final boolean isAirplaneMode(){
-        return Settings.System.getInt(BasicApplication.getAppContext().getContentResolver(),
+    public static final boolean isAirplaneMode() {
+        return Settings.System.getInt(BaseApp.getAppContext().getContentResolver(),
                 Settings.System.AIRPLANE_MODE_ON, 0) != 0;
     }
+
     /**
      * 判断网络是否连接
      * <p>需添加权限 {@code <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>}</p>
+     *
      * @return {@code true}: 是<br>{@code false}: 否
      */
     public static boolean isConnected() {
@@ -96,10 +97,11 @@ public final class NetworkUtil {
     /**
      * 判断wifi是否连接状态
      * <p>需添加权限 {@code <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>}</p>
+     *
      * @return {@code true}: 连接<br>{@code false}: 未连接
      */
     public static boolean isWifiConnected() {
-        final Context context  = BasicApplication.getAppContext();
+        final Context context = BaseApp.getAppContext();
         ConnectivityManager cm = (ConnectivityManager) context
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         return cm != null && cm.getActiveNetworkInfo() != null &&
@@ -109,10 +111,11 @@ public final class NetworkUtil {
     /**
      * 获取移动网络运营商名称
      * <p>如中国联通、中国移动、中国电信</p>
+     *
      * @return 移动网络运营商名称
      */
     public static String getNetworkOperatorName() {
-        final Context context = BasicApplication.getAppContext();
+        final Context context = BaseApp.getAppContext();
         TelephonyManager tm = (TelephonyManager) context
                 .getSystemService(Context.TELEPHONY_SERVICE);
         return tm != null ? tm.getNetworkOperatorName() : null;
@@ -130,7 +133,7 @@ public final class NetworkUtil {
      * </ul>
      */
     public static int getPhoneType() {
-        final Context context = BasicApplication.getAppContext();
+        final Context context = BaseApp.getAppContext();
         TelephonyManager tm = (TelephonyManager) context
                 .getSystemService(Context.TELEPHONY_SERVICE);
         return tm != null ? tm.getPhoneType() : -1;
@@ -238,7 +241,7 @@ public final class NetworkUtil {
     }
 
     public static int getWifiSignal() {
-        Context context = BasicApplication.getAppContext();
+        Context context = BaseApp.getAppContext();
         WifiManager wifiManager = (WifiManager) context.getApplicationContext().getSystemService(WIFI_SERVICE);
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
         int level = wifiInfo.getRssi();

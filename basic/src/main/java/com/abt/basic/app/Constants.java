@@ -14,7 +14,7 @@ public class Constants {
     /**
      * Path
      */
-    private static final String PATH_DATA = BaseApp.getInstance().getCacheDir().getAbsolutePath() + File.separator + "data";
+    private static final String PATH_DATA = BaseApp.getAppContext().getCacheDir().getAbsolutePath() + File.separator + "data";
     public static final String PATH_CACHE = PATH_DATA + "/NetCache";
 
     /**
