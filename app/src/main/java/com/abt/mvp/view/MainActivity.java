@@ -5,6 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.abt.mvp.R;
 
+/**
+ * @author 黄卫旗
+ * @description MainActivity
+ * @time 2018/09/07
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override
