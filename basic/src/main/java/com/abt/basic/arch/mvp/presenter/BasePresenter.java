@@ -13,14 +13,6 @@ import io.reactivex.disposables.Disposable;
 public class BasePresenter<T extends IBaseView> implements AbstractPresenter<T> {
 
     protected T mView;
-    private CompositeDisposable compositeDisposable;
-
-    protected void addSubscribe(Disposable disposable) {
-        if (compositeDisposable == null) {
-            compositeDisposable = new CompositeDisposable();
-        }
-        compositeDisposable.add(disposable);
-    }
 
     @Override
     public void attachView(T view) {
@@ -30,9 +22,7 @@ public class BasePresenter<T extends IBaseView> implements AbstractPresenter<T> 
     @Override
     public void detachView() {
         this.mView = null;
-        if (compositeDisposable != null) {
-            compositeDisposable.clear();
-        }
     }
 
 }
+
