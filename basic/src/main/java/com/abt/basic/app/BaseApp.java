@@ -17,19 +17,30 @@ import com.squareup.leakcanary.RefWatcher;
 public abstract class BaseApp extends Application {
 
     private DaoSession mDaoSession;
-    private static BaseApp instance;
+    private static BaseApp sContext;    
     private RefWatcher refWatcher;
     private static volatile AppComponent appComponent;
-
-    public static synchronized BaseApp getInstance() {
-        return instance;
-    }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        initGreenDao();
+        sContext = this;
+        init();
+        initComplete();
+        initGreenDao();        
     }
+
+    public static final BaseApplication getAppContext() {
+        return sContext;
+    }
+
+    private final void init() {
+        if (BuildConfig.DEBUG) {
+            //DebugManage.initialize(this);
+        }
+    }
+
+    public abstract void initComplete();
 
     private void initGreenDao() {
         DaoMaster.DevOpenHelper devOpenHelper = new DaoMaster.DevOpenHelper(this, Constants.DB_NAME);
@@ -58,5 +69,4 @@ public abstract class BaseApp extends Application {
         return application.refWatcher;
     }
 
-    public abstract void initComplete();
 }
