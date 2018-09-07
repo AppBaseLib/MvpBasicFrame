@@ -3,6 +3,11 @@ package com.abt.mvp.model;
 import android.os.Handler;
 import android.text.TextUtils;
 
+/**
+ * @author 黄卫旗
+ * @description LoginModelImpl
+ * @time 2018/09/07
+ */
 public class LoginModelImpl implements ILoginModel {
 
     @Override
