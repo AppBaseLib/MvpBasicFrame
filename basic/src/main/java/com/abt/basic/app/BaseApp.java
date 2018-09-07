@@ -30,7 +30,7 @@ public abstract class BaseApp extends Application {
         initGreenDao();        
     }
 
-    public static final BaseApplication getAppContext() {
+    public static final BaseApp getAppContext() {
         return sContext;
     }
 
