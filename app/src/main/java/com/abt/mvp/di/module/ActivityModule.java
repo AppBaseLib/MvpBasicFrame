@@ -1,8 +1,8 @@
-package com.abt.basic.di.module;
+package com.abt.mvp.di.module;
 
 import android.app.Activity;
 
-import com.abt.basic.di.scope.ActivityScope;
+import com.abt.mvp.di.scope.ActivityScope;
 
 import dagger.Module;
 import dagger.Provides;

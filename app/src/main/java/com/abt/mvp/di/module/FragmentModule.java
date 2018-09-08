@@ -1,10 +1,10 @@
-package com.abt.basic.di.module;
+package com.abt.mvp.di.module;
 
 import android.app.Activity;
 import android.app.DialogFragment;
 import android.support.v4.app.Fragment;
 
-import com.abt.basic.di.scope.FragmentScope;
+import com.abt.mvp.di.scope.FragmentScope;
 
 import dagger.Module;
 import dagger.Provides;

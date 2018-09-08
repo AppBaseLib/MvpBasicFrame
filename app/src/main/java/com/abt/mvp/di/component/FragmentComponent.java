@@ -1,9 +1,9 @@
-package com.abt.basic.di.component;
+package com.abt.mvp.di.component;
 
 import android.app.Activity;
 
-import com.abt.basic.di.module.FragmentModule;
-import com.abt.basic.di.scope.FragmentScope;
+import com.abt.mvp.di.module.FragmentModule;
+import com.abt.mvp.di.scope.FragmentScope;
 
 import dagger.Component;
 
@@ -18,14 +18,11 @@ public interface FragmentComponent {
 
     /**
      * 获取Activity实例
-     *
-     * @return Activity
      */
     Activity getActivity();
 
     /**
      * 注入MainPagerFragment所需的依赖
-     *
      * @param mainPagerFragment MainPagerFragment
      */
 //    void inject(MainPagerFragment mainPagerFragment);
@@ -39,7 +36,6 @@ public interface FragmentComponent {
 
     /**
      * 注入KnowledgeHierarchyListFragment所需的依赖
-     *
      * @param knowledgeHierarchyListFragment KnowledgeHierarchyListFragment
      */
 //    void inject(KnowledgeHierarchyListFragment knowledgeHierarchyListFragment);

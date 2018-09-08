@@ -1,4 +1,4 @@
-package com.abt.basic.di.qualifier;
+package com.abt.mvp.di.qualifier;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

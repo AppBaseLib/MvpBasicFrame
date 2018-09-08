@@ -15,8 +15,8 @@ public class LoginModel implements ILoginModel {
     @Override
     public void login(final String username, final String password, final OnLoginCallback callback) {
         HttpHelper httpHelper = MvpApplication.getInstance().getDataManager();
-        //httpHelper.login(username, password);
-        httpHelper.getLoginData(username, password);
+        httpHelper.login(username, password);
+        //httpHelper.getLoginData(username, password);
     }
 
     @Override

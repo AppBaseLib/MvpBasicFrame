@@ -1,11 +1,11 @@
-package com.abt.basic.di.module;
+package com.abt.mvp.di.module;
 
 import com.abt.basic.BuildConfig;
 import com.abt.basic.app.Constants;
-import com.abt.basic.core.http.api.GeeksApis;
-import com.abt.basic.core.http.cookies.CookiesManager;
-import com.abt.basic.di.qualifier.WanAndroidUrl;
 import com.abt.basic.utils.CommonUtil;
+import com.abt.mvp.data.network.api.GeeksApis;
+import com.abt.mvp.data.network.cookies.CookiesManager;
+import com.abt.mvp.di.qualifier.WanAndroidUrl;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;

@@ -4,7 +4,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.abt.basic.app.BaseApp;
 import com.abt.basic.app.Constants;
-import com.abt.basic.di.component.AppComponent;
 import com.abt.mvp.data.DataManager;
 import com.abt.mvp.data.account.FilePrefsHelper;
 import com.abt.mvp.data.account.FilePrefsImpl;
@@ -19,6 +18,7 @@ import com.abt.mvp.data.network.HttpHelperImpl;
 import com.abt.mvp.data.network.api.GeeksApis;
 import com.abt.mvp.data.prefs.PreferenceHelper;
 import com.abt.mvp.data.prefs.PreferenceHelperImpl;
+import com.abt.mvp.di.component.AppComponent;
 import com.squareup.leakcanary.RefWatcher;
 
 /**
