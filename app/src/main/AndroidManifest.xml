@@ -11,15 +11,17 @@
         android:name=".app.MvpApplication" >
 
         <activity android:name=".view.LoginActivity">
+        </activity>
+
+        <activity android:name=".view.MainActivity">
+        </activity>
+
+        <activity android:name=".view.live.LiveActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <activity android:name=".view.MainActivity">
-
         </activity>
 
 </application>
