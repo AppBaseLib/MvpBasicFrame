@@ -33,8 +33,8 @@ public interface FilePrefsHelper {
 	void setToken(String token);
 
 	final class Factory {
-		public static final FilePrefsHelper getInstance(Context context) {
-			return MemoPrefsImpl.getInstance(context);
+		public static final FilePrefsHelper getInstance() {
+			return MemoPrefsImpl.getInstance();
 		}
 	}
 }

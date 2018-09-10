@@ -61,7 +61,7 @@ public class MvpApplication extends BaseApp {
     }
 
     private void initApis() {
-        mGeeksApis = (GeeksApis) new HttpHelperImpl();
+        // TODO mGeeksApis = (GeeksApis) new HttpHelperImpl();
     }
 
     private void initDataManager() {

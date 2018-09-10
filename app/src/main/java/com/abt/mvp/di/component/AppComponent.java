@@ -1,10 +1,6 @@
 package com.abt.mvp.di.component;
 
 import com.abt.basic.app.BaseApp;
-import com.abt.mvp.data.DataManager;
-import com.abt.mvp.data.db.DbHelper;
-import com.abt.mvp.data.network.retorfit.RetrofitHelper;
-import com.abt.mvp.data.prefs.PreferenceHelperImpl;
 import com.abt.mvp.di.module.AppModule;
 import com.abt.mvp.di.module.HttpModule;
 
@@ -33,27 +29,27 @@ public interface AppComponent {
      *
      * @return DataManager
      */
-    DataManager getDataManager();
+    //DataManager getDataManager();
 
     /**
      * 提供http的帮助类
      *
      * @return RetrofitHelper
      */
-    RetrofitHelper retrofitHelper();
+    //HttpHelper httpHelper();
 
     /**
      * 提供数据库帮助类
      *
      * @return GreenDaoHelper
      */
-    DbHelper realmHelper();
+    //DbHelper realmHelper();
 
     /**
      * 提供sp帮助类
      *
      * @return PreferenceHelperImpl
      */
-    PreferenceHelperImpl preferencesHelper();
+    //PreferenceHelperImpl preferencesHelper();
 
 }
