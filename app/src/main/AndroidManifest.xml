@@ -16,12 +16,15 @@
         <activity android:name=".view.MainActivity">
         </activity>
 
-        <activity android:name=".view.live.LiveActivity">
+        <activity android:name=".view.live.LifeCycleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".view.live.LiveActivity">
         </activity>
 
 </application>
