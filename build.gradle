@@ -20,9 +20,8 @@ allprojects {
         google()
         jcenter()
         mavenCentral()
-        maven {
-            url "https://jitpack.io"
-        }
+        maven { url "https://jitpack.io" }
+        maven { url 'https://maven.google.com' }  //添加此行
     }
 }
 
