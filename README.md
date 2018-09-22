@@ -1,7 +1,7 @@
 
 ## MvpBasicFrame          
 
-基于MVPSample的Mvp基础框架      
+1、基于MVPSample的Mvp基础框架
 
 ## 参考资料
 1、[搭建自己的框架之1：Rxjava2+Retrofit2 实现Android Http请求](https://www.jianshu.com/p/04ce0c91e3ee)         
