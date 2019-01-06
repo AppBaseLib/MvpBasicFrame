@@ -20,3 +20,11 @@
 4、[AnyLifeZLB/MVP-Dagger2-Rxjava2](https://github.com/AnyLifeZLB/MVP-Dagger2-Rxjava2):不错         
 5、[Rukey7/MvpApp](https://github.com/Rukey7/MvpApp):技术栈比较旧，项目跑不起来，App功能比较丰富，技术栈比较完善，代码结构化不错    
 
+6、[MindorksOpenSource/android-mvp-architecture](https://github.com/MindorksOpenSource/android-mvp-architecture):不错，还有具体的app样例   
+
+7、[huyongqiang/AndroidAppFrameWork](https://github.com/huyongqiang/AndroidAppFrameWork)：可以学些下    
+
+8、[quangctkm9207/mvp-android-arch-component](https://github.com/quangctkm9207/mvp-android-arch-component)：包含新架构组件的样例。      
+
+
+
