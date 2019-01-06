@@ -13,3 +13,5 @@
 3、[xu649526275/MyMVPDemo - 一般](https://github.com/xu649526275/MyMVPDemo)              
 4、[AnyLifeZLB/MVP-Dagger2-Rxjava2 - 不错](https://github.com/AnyLifeZLB/MVP-Dagger2-Rxjava2)        
 
+1、[Rukey7/MvpApp](https://github.com/Rukey7/MvpApp):技术栈比较旧，项目跑不起来，App功能比较丰富，技术栈比较完善，代码结构化不错
+
